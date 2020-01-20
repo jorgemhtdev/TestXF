@@ -1,9 +1,8 @@
 ﻿namespace TestXF.Services
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Refit;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using TestXF.Interfaces;
     using TestXF.Models;
 

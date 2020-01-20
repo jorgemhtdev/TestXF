@@ -12,7 +12,6 @@ namespace TestXF.Test
         protected Mock<IConnectivity> ConnMock { get; set; }
         protected Mock<IApiService> RestMock { get; set; }
 
-
         public Tests()
         {
             MockForms.Init();
@@ -23,8 +22,6 @@ namespace TestXF.Test
 
             DependencyService.Register<IConnectivity>(ConnMock.Object);
             DependencyService.Register<IApiService>(RestMock.Object);
-            //DependencyService.Register<INavigation>(MockNavigationServices.Instance);
         }
-
     }
 }

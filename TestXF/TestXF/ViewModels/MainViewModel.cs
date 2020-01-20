@@ -1,24 +1,104 @@
 ﻿namespace TestXF.ViewModels
 {
+    using System;
+    using System.Collections.ObjectModel;
     using TestXF.Interfaces;
+    using TestXF.Models;
 
     public class MainViewModel : BaseViewModel
     {
-        public MainViewModel()
+        private string userName;
+        private string password;
+        private bool isAuthenticated;
+        private ObservableCollection<Film> films;
+
+        public string UserName
         {
-            Initialize();
+            get
+            {
+                return userName;
+            }
+            set
+            {
+                if (userName != value)
+                {
+                    userName = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
-        public MainViewModel(IDependencyService dependencyService) : base(dependencyService)
+        public string Password
         {
-            Initialize();
+            get
+            {
+                return password;
+            }
+            set
+            {
+                if (password != value)
+                {
+                    password = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
-        public async void Initialize()
+        public bool IsAuthenticated
         {
-           var apiService = DependencyService.Get<IApiService>();
+            get
+            {
+                return isAuthenticated;
+            }
+            set
+            {
+                if (isAuthenticated != value)
+                {
+                    isAuthenticated = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
-           var films = await apiService.GetAllFilm();
+        public ObservableCollection<Film> Films
+        {
+            get => films;
+            set
+            {
+                films = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public MainViewModel() { }
+
+        public MainViewModel(IDependencyService dependencyService) : base(dependencyService) { }
+
+        public async void LoadFilm()
+        {
+            if (Online)
+            {
+                var apiService = DependencyService.Get<IApiService>();
+
+                new ObservableCollection<Film>(await apiService.GetAllFilm());
+            }
+            else
+            {
+                throw new Exception();
+            }
+
+        }
+
+        public void Login()
+        {
+            if (String.IsNullOrWhiteSpace(UserName) || String.IsNullOrWhiteSpace(Password))
+            {
+                
+            }
+            else
+            {
+                isAuthenticated = true;
+            }
         }
     }
 }
