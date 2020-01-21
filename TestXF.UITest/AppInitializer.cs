@@ -8,11 +8,7 @@
         {
             if (platform == Platform.Android)
             {
-                return ConfigureApp
-                    .Android
-                    .InstalledApp("com.jorgemht.testxf")
-                    .EnableLocalScreenshots()
-                    .StartApp();
+                return ConfigureApp.Android.StartApp();
             }
 
             return ConfigureApp.iOS.StartApp();

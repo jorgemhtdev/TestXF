@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TestXF.Views.LoginView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <FlexLayout Direction="Column">
+            <FlexLayout
+                Direction="Column"
+                FlexLayout.Grow="1"
+                JustifyContent="Center">
+                <Image />
+            </FlexLayout>
+
+            <FlexLayout
+                Direction="Column"
+                FlexLayout.Grow="1"
+                JustifyContent="End">
+                <Entry
+                    x:Name="Email"
+                    AutomationId="email"
+                    HeightRequest="60"
+                    Keyboard="Email"
+                    Placeholder="Email"
+                    Text="{Binding UserName}" />
+
+                <Entry
+                    AutomationId="password"
+                    HeightRequest="60"
+                    IsPassword="True"
+                    Keyboard="Default"
+                    Placeholder="Password"
+                    Text="{Binding Password}" />
+            </FlexLayout>
+
+            <FlexLayout
+                AlignItems="Center"
+                Direction="Column"
+                FlexLayout.Grow="1"
+                JustifyContent="Center">
+                <Button
+                    AutomationId="signin"
+                    Command="{Binding SignInCommand}"
+                    Text="Enviar" />
+            </FlexLayout>
+            <ActivityIndicator
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                Color="Black" />
+        </FlexLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -2,6 +2,7 @@
 {
     using TestXF.Interfaces;
     using TestXF.Services;
+    using TestXF.Views;
     using Xamarin.Forms;
 
     public partial class App : Application
@@ -12,7 +13,7 @@
 
             LoadDependency();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new LoginView());
         }
 
         private void LoadDependency()

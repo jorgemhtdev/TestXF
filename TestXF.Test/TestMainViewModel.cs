@@ -1,10 +1,7 @@
 ﻿namespace TestXF.Test
 {
     using FluentAssertions;
-    using Moq;
-    using System;
     using System.Collections.Generic;
-    using System.Net.Http;
     using System.Threading.Tasks;
     using TestXF.Models;
     using TestXF.Test.Mocks.Repositories;
